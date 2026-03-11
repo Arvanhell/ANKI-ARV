@@ -148,6 +148,41 @@ footer {
   opacity: 0.7;
 }
 
+/* --- FUNDAMENT MOBILNY (Twój styl ARV) --- */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .card {
+    width: 95%;           /* Karta prawie na cały ekran */
+    max-width: 400px;
+    padding: 20px;
+    margin: 10px auto;
+  }
+
+  #question {
+    font-size: 1.3rem;    /* Mniejszy tekst, by nie rozpychał karty */
+  }
+
+  #answer-section {
+    width: 100%;          /* KLUCZOWE: Nie wychodzi poza kartę */
+    max-width: 100%;
+    overflow-wrap: break-word; /* Rozbija długie słowa */
+    word-wrap: break-word;
+    font-size: 1rem;
+    line-height: 1.4;
+    box-sizing: border-box; /* Liczy padding do wewnątrz */
+  }
+
+  button {
+    width: 100%;          /* Przyciski na całą szerokość dla kciuka */
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
+
+
 #system-tools button:hover {
   opacity: 1;
   border-color: var(--neon-blue);
