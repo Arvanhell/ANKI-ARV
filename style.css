@@ -1,3 +1,4 @@
+/* --- FOUNDATIONS --- */
 :root {
   --bg-color: #0d1117;
   --text-color: #c9d1d9;
@@ -7,17 +8,23 @@
   --border-radius: 8px;
 }
 
+* {
+  box-sizing: border-box; /* Ensures padding doesn't push elements out of bounds */
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
+/* --- HEADER --- */
 header {
   text-align: center;
   padding: 20px;
@@ -25,8 +32,14 @@ header {
   width: 100%;
 }
 
+.user-profile input {
+  margin: 10px 0;
+  width: 200px;
+}
+
+/* --- MAIN CONTAINER --- */
 main {
-  width: 90%;
+  width: 95%;
   max-width: 600px;
   margin-top: 20px;
 }
@@ -47,6 +60,7 @@ input {
   color: white;
   padding: 12px;
   border-radius: 4px;
+  width: 100%;
 }
 
 input:focus {
@@ -58,30 +72,62 @@ input:focus {
   background-color: var(--neon-green);
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;
+  transition: opacity 0.2s;
 }
 
+#add-btn:hover {
+  opacity: 0.8;
+}
+
+/* --- FLASHCARD CORE --- */
 .card {
   margin-top: 30px;
-  padding: 40px;
+  padding: 30px;
   background: #161b22;
   border: 2px solid var(--neon-blue);
   box-shadow: 0 0 15px rgba(88, 166, 255, 0.2);
   border-radius: var(--border-radius);
   text-align: center;
+  width: 100%;
 }
 
+/* Answer Section - Fixed for long code snippets */
+#answer-text {
+  display: block !important;
+  width: 100% !important;
+  margin-top: 20px;
+  padding: 15px;
+  color: var(--neon-green);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  
+  /* Critical wrapping rules for mobile code display */
+  white-space: pre-wrap !important; 
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+  
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left; /* Better readability for code */
+}
+
+/* --- FOOTER & CONTROLS --- */
 footer {
   margin-top: auto;
-  padding: 40px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
 }
 
 #show-answer {
-  padding: 15px 30px;
-  font-size: 1.2rem;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
   background: transparent;
   color: var(--neon-blue);
   border: 2px solid var(--neon-blue);
@@ -95,48 +141,35 @@ footer {
   color: var(--bg-color);
 }
 
-#answer-section {
-    display: block !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    word-break: break-all !important;    /* Wymusza łamanie w dowolnym miejscu */
-    overflow-wrap: anywhere !important;  /* Nowoczesny bezpiecznik */
-    white-space: normal !important;      /* Upewnia się, że tekst nie chce być w jednej linii */
-    text-align: center;       /* Żeby kod wyglądał estetycznie */
-    padding: 10px;            /* Oddech od krawędzi niebieskiej ramki */
-    color: var(--neon-green);
-    text-align: center;
+#repetition-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows buttons to stack on very small screens */
 }
 
-
+#repetition-controls button {
+  padding: 10px 15px;
+  cursor: pointer;
+  background: #21262d;
+  color: var(--text-color);
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  flex: 1; 
+  min-width: 80px;
+}
 
 .omega {
   background: var(--danger) !important;
-  color: white;
+  color: white !important;
   border: 1px solid white !important;
   font-weight: bold;
   text-transform: uppercase;
   box-shadow: 0 0 10px var(--danger);
 }
 
-#repetition-controls {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  justify-content: center;
-}
-
-#repetition-controls button {
-  padding: 10px;
-  cursor: pointer;
-  background: #21262d;
-  color: var(--text-color);
-  border: 1px solid #30363d;
-  border-radius: 4px;
-}
-
-/* Import Export */
-
+/* --- SYSTEM TOOLS --- */
 #system-tools {
   display: flex;
   justify-content: center;
@@ -149,45 +182,25 @@ footer {
   background: #161b22;
   border: 1px solid #30363d;
   opacity: 0.7;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
-/* UNIWERSALNA REGUŁA DLA WSZYSTKICH EKRANÓW MOBILNYCH */
+/* --- MOBILE RESPONSIVENESS --- */
 @media screen and (max-width: 768px) {
-  * {
-    box-sizing: border-box; /* Wszystko liczy się DO ŚRODKA, nic nie wypycha na zewnątrz */
-  }
-
-  body {
-    padding: 10px;
-    overflow-x: hidden; /* Zakaz przesuwania strony na boki */
+  main {
+    width: 95%;
   }
 
   .card {
-    width: 92%;           /* Karta zajmuje większość ekranu, ale zostawia oddech */
-    max-width: 500px;     /* Ale nigdy nie staje się gigantem na większych ekranach */
-    margin: 20px auto;    /* Centrowanie idealne */
-    padding: clamp(15px, 5vw, 25px); /* Inteligentny padding zależny od wielkości ekranu */
+    padding: 20px;
+    margin-top: 15px;
   }
 
-  #answer-section, #question {
-    width: 100%;
-    max-width: 100%;
-    word-wrap: break-word;   /* Rozbijanie zbyt długich słów */
-    overflow-wrap: any-where; /* Ostateczne zabezpieczenie przed wyciekiem tekstu */
-    display: block;          /* Wymusza bycie w nowej linii */
-  }
+  h1 { font-size: 1.5rem; }
 
-  #answer-text pre, 
-  #answer-text code,
-  #answer-text {
-    white-space: pre-wrap !important; 
-    world-break: break-all !important;
-    owerflow-wrap: anywhere !important;
-    max-width: 100% !important;
-  
-  button {
-    width: 100%;             /* Przyciski zawsze na całą szerokość karty */
-    margin: 8px 0;
-    padding: 14px;
+  #show-answer {
+    font-size: 1rem;
   }
 }
