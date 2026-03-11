@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anki ARV v 1.1</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+     <header>
+       <h1> ANKI ARV </h1>
+       <section class="user-profile">
+         <section class="stats">
+           <p>Cards in deck: <span id="total-cards"></span></p>
+         </section>
+         <input type="text" id="user-input" placeholder="Pilot Name...">
+         <button id="login-btn">Sync System</button>
+         <h3>Active Pilot: <span id="display-name">Guest</span></h3>
+       </section>
+     </header>
+     
+     <main>
+       <section id="admin-panel">
+         <input type="text" id="quest-input" placeholder="Question (English)...">
+         <input type="text" id="ans-input" placeholder="Answer (English)...">
+         <button id= "add-btn">Add to Deck</button>
+       </section>
+       
+       <hr>
+       
+       <article class="flashcard">
+         <h2 id="question-text">Sync system to start...</h2>
+         <div id="answer-text" style="display:none"></div>
+       </article>
+     </main>
+     
+     <footer>
+  <div id="repetition-controls" style="display:none">
+    <button onclick="postpone(1)">Hard (1d)</button>
+    <button onclick="postpone(3)">Good (3d)</button>
+    <button onclick="postpone(7)">Easy (7d)</button>
+    <button onclick="postpone(30)" class="omega">Alfa & Omega</button>
+  </div>
+
+  <button id="show-answer">Show Answer</button>
+
+  <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #30363d;">
+
+  <section id="system-tools">
+    <button id="export-btn" title="Save deck to file">💾 Export</button>
+    <input type="file" id="import-input" style="display:none">
+    <button id="import-btn" title="Load deck from file">📥 Import</button>
+  </section>
+</footer>
+
+     
+     <script src="main.js"></script>
+  </body>
+</html>

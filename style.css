@@ -1,0 +1,142 @@
+:root {
+  --bg-color: #0d1117;
+  --text-color: #c9d1d9;
+  --neon-blue: #58a6ff;
+  --neon-green: #2ea043;
+  --danger: #f85149;
+  --border-radius: 8px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 2px solid var(--neon-blue);
+  width: 100%;
+}
+
+main {
+  width: 90%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+#admin-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #161b22;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid #30363d;
+}
+
+input {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: white;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+input:focus {
+  border-color: var(--neon-blue);
+  outline: none;
+}
+
+#add-btn {
+  background-color: var(--neon-green);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.flashcard {
+  margin-top: 30px;
+  padding: 40px;
+  background: #161b22;
+  border: 2px solid var(--neon-blue);
+  box-shadow: 0 0 15px rgba(88, 166, 255, 0.2);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+footer {
+  margin-top: auto;
+  padding: 40px;
+}
+
+#show-answer {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background: transparent;
+  color: var(--neon-blue);
+  border: 2px solid var(--neon-blue);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#show-answer:hover {
+  background: var(--neon-blue);
+  color: var(--bg-color);
+}
+
+.omega {
+  background: var(--danger) !important;
+  color: white;
+  border: 1px solid white !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px var(--danger);
+}
+
+#repetition-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+#repetition-controls button {
+  padding: 10px;
+  cursor: pointer;
+  background: #21262d;
+  color: var(--text-color);
+  border: 1px solid #30363d;
+  border-radius: 4px;
+}
+
+/* Import Export */
+
+#system-tools {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 10px;
+}
+
+#system-tools button {
+  font-size: 0.75rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  opacity: 0.7;
+}
+
+#system-tools button:hover {
+  opacity: 1;
+  border-color: var(--neon-blue);
+}
