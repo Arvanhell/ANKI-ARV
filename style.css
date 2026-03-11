@@ -148,42 +148,35 @@ footer {
   opacity: 0.7;
 }
 
-/* --- FUNDAMENT MOBILNY (Twój styl ARV) --- */
-@media (max-width: 600px) {
+/* UNIWERSALNA REGUŁA DLA WSZYSTKICH EKRANÓW MOBILNYCH */
+@media screen and (max-width: 768px) {
+  * {
+    box-sizing: border-box; /* Wszystko liczy się DO ŚRODKA, nic nie wypycha na zewnątrz */
+  }
+
   body {
     padding: 10px;
+    overflow-x: hidden; /* Zakaz przesuwania strony na boki */
   }
 
   .card {
-    width: 95%;           /* Karta prawie na cały ekran */
-    max-width: 400px;
-    padding: 20px;
-    margin: 10px auto;
+    width: 92%;           /* Karta zajmuje większość ekranu, ale zostawia oddech */
+    max-width: 500px;     /* Ale nigdy nie staje się gigantem na większych ekranach */
+    margin: 20px auto;    /* Centrowanie idealne */
+    padding: clamp(15px, 5vw, 25px); /* Inteligentny padding zależny od wielkości ekranu */
   }
 
-  #question {
-    font-size: 1.3rem;    /* Mniejszy tekst, by nie rozpychał karty */
-  }
-
-  #answer-section {
-    width: 100%;          /* KLUCZOWE: Nie wychodzi poza kartę */
+  #answer-section, #question {
+    width: 100%;
     max-width: 100%;
-    overflow-wrap: break-word; /* Rozbija długie słowa */
-    word-wrap: break-word;
-    font-size: 1rem;
-    line-height: 1.4;
-    box-sizing: border-box; /* Liczy padding do wewnątrz */
+    word-wrap: break-word;   /* Rozbijanie zbyt długich słów */
+    overflow-wrap: any-where; /* Ostateczne zabezpieczenie przed wyciekiem tekstu */
+    display: block;          /* Wymusza bycie w nowej linii */
   }
 
   button {
-    width: 100%;          /* Przyciski na całą szerokość dla kciuka */
-    padding: 15px;
-    font-size: 1rem;
+    width: 100%;             /* Przyciski zawsze na całą szerokość karty */
+    margin: 8px 0;
+    padding: 14px;
   }
-}
-
-
-#system-tools button:hover {
-  opacity: 1;
-  border-color: var(--neon-blue);
 }
