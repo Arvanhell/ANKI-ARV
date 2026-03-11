@@ -177,6 +177,14 @@ footer {
     display: block;          /* Wymusza bycie w nowej linii */
   }
 
+  #answer-text pre, 
+  #answer-text code,
+  #answer-text {
+    white-space: pre-wrap !important; 
+    world-break: break-all !important;
+    owerflow-wrap: anywhere !important;
+    max-width: 100% !important;
+  
   button {
     width: 100%;             /* Przyciski zawsze na całą szerokość karty */
     margin: 8px 0;
