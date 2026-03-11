@@ -96,11 +96,16 @@ footer {
 }
 
 #answer-section {
-    word-break: break-all;    /* Wymusza łamanie w dowolnym miejscu */
-    overflow-wrap: anywhere;  /* Nowoczesny bezpiecznik */
-    white-space: normal;      /* Upewnia się, że tekst nie chce być w jednej linii */
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-all !important;    /* Wymusza łamanie w dowolnym miejscu */
+    overflow-wrap: anywhere !important;  /* Nowoczesny bezpiecznik */
+    white-space: normal !important;      /* Upewnia się, że tekst nie chce być w jednej linii */
     text-align: center;       /* Żeby kod wyglądał estetycznie */
     padding: 10px;            /* Oddech od krawędzi niebieskiej ramki */
+    color: var(--neon-green);
+    text-align: center;
 }
 
 
