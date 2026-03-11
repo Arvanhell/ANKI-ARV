@@ -95,6 +95,18 @@ footer {
   color: var(--bg-color);
 }
 
+#answer-section {
+  margin-top: 20px;
+  line-height: 1.6;
+  color: var(--neon-green);
+  font-size: 1.1rem;
+  width: 100%;             /* KLUCZ */
+  max-width: 100%;         /* RYGIEL */
+  overflow-wrap: break-word; 
+  word-wrap: break-word;   
+}
+
+
 .omega {
   background: var(--danger) !important;
   color: white;
