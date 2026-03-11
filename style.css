@@ -96,15 +96,13 @@ footer {
 }
 
 #answer-section {
-  margin-top: 20px;
-  line-height: 1.6;
-  color: var(--neon-green);
-  font-size: 1.1rem;
-  width: 100%;             /* KLUCZ */
-  max-width: 100%;         /* RYGIEL */
-  overflow-wrap: break-word; 
-  word-wrap: break-word;   
+    word-break: break-all;    /* Wymusza łamanie w dowolnym miejscu */
+    overflow-wrap: anywhere;  /* Nowoczesny bezpiecznik */
+    white-space: normal;      /* Upewnia się, że tekst nie chce być w jednej linii */
+    text-align: center;       /* Żeby kod wyglądał estetycznie */
+    padding: 10px;            /* Oddech od krawędzi niebieskiej ramki */
 }
+
 
 
 .omega {
