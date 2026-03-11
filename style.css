@@ -97,18 +97,19 @@ input:focus {
 
 /* Answer Section - Fixed for long code snippets */
 #answer-text {
-  display: block !important;
-  width: 100% !important;
+  display: none;
+  width: 100% ;
   margin-top: 20px;
   padding: 15px;
   color: var(--neon-green);
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px dashed var(--neon-green);
   border-radius: 4px;
   
   /* Critical wrapping rules for mobile code display */
-  white-space: pre-wrap !important; 
-  word-break: break-all !important;
-  overflow-wrap: anywhere !important;
+  white-space: pre-wrap ; 
+  word-break: break-all ;
+  overflow-wrap: anywhere ;
   
   font-family: 'Courier New', monospace;
   font-size: 0.95rem;
