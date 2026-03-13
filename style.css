@@ -1,4 +1,4 @@
-/* --- FOUNDATIONS --- */
+/* --- 1. FUNDAMENTY (ZMIENNE) --- */
 :root {
   --bg-color: #0d1117;
   --text-color: #c9d1d9;
@@ -8,40 +8,68 @@
   --border-radius: 8px;
 }
 
-* {
-  box-sizing: border-box; /* Ensures padding doesn't push elements out of bounds */
-}
+/* --- 2. STRUKTURA BAZOWA --- */
+* { box-sizing: border-box; }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  overflow-x: hidden; /* Prevents horizontal scrolling */
+  padding: 10px;
+  overflow-x: hidden;
 }
 
-/* --- HEADER --- */
 header {
   text-align: center;
   padding: 20px;
   border-bottom: 2px solid var(--neon-blue);
   width: 100%;
+  margin-bottom: 20px;
 }
 
-.user-profile input {
-  margin: 10px 0;
-  width: 200px;
+/* --- 3. PROFIL PILOTA (SYNC) --- */
+.user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-/* --- MAIN CONTAINER --- */
+#login-btn {
+  width: auto;               /* Pozwala bramom ogrodu się rozszerzyć */
+  min-width: 45px;           /* Ale nie mniejszy niż kwadrat */
+  height: 45px;
+  padding: 0 15px;           /* Daje oddech napisowi po bokach */
+  background: transparent;
+  color: var(--neon-blue);
+  border: 1px solid var(--neon-blue);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;        /* Nieco mniejsza czcionka, by była smuklejsza */
+  white-space: nowrap;       /* Zakaz łamania tekstu na dwie linie */
+  transition: 0.3s;
+}
+
+
+#login-btn:hover {
+  background: rgba(88, 166, 255, 0.1);
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* --- 4. ADMIN PANEL & INPUTS --- */
 main {
-  width: 95%;
+  width: 100%;
   max-width: 600px;
-  margin-top: 20px;
 }
 
 #admin-panel {
@@ -54,6 +82,20 @@ main {
   border: 1px solid #30363d;
 }
 
+/* Koniec autostrady dla stonogi - skracamy pole pilota */
+#user-input {
+    width: 140px !important; /* Sztywna, krótka granica */
+    flex: none !important;    /* Zakaz rozciągania się */
+    margin-right: 10px;
+}
+
+/* Upewnienie się, że napis "Active Pilot" nie ucieka niżej */
+.user-profile h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
 input {
   background: #0d1117;
   border: 1px solid #30363d;
@@ -61,11 +103,6 @@ input {
   padding: 12px;
   border-radius: 4px;
   width: 100%;
-}
-
-input:focus {
-  border-color: var(--neon-blue);
-  outline: none;
 }
 
 #add-btn {
@@ -76,132 +113,125 @@ input:focus {
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;
-  transition: opacity 0.2s;
+  transition: 0.3s;
 }
 
-#add-btn:hover {
-  opacity: 0.8;
-}
-
-/* --- FLASHCARD CORE --- */
+/* --- 5. KARTA --- */
 .card {
+  position: relative; /* FUNDAMENT DLA KOSZA */
   margin-top: 30px;
-  padding: 30px;
+  padding: 40px;
   background: #161b22;
   border: 2px solid var(--neon-blue);
   box-shadow: 0 0 15px rgba(88, 166, 255, 0.2);
   border-radius: var(--border-radius);
   text-align: center;
-  width: 100%;
 }
 
-/* Answer Section - Fixed for long code snippets */
+#question-text {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 #answer-text {
-  display: none;
-  width: 100% ;
-  margin-top: 20px;
-  padding: 15px;
   color: var(--neon-green);
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px dashed var(--neon-green);
-  border-radius: 4px;
-  
-  /* Critical wrapping rules for mobile code display */
-  white-space: pre-wrap ; 
-  word-break: break-all ;
-  overflow-wrap: anywhere ;
-  
-  font-family: 'Courier New', monospace;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  text-align: left; /* Better readability for code */
+  font-size: 1.3rem;
+  padding: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-/* --- FOOTER & CONTROLS --- */
+/* --- 6. KOSZ (SMUKŁY AGENT) --- */
+#delete-btn {
+  position: absolute;
+  top: -15px;         /* Wystaje lekko ponad górną krawędź karty */
+  right: -15px;       /* Wystaje lekko poza prawą krawędź karty */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--bg-color); /* Tło jak strona, żeby się odcinał */
+  color: var(--danger);
+  border: 2px solid var(--danger);
+  display: none;       /* Startowo ukryty, JS go włączy */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;        /* Nad wszystkimi innymi elementami */
+  font-size: 1.4rem;
+  box-shadow: 0 0 15px rgba(248, 81, 73, 0.4);
+  transition: 0.3s ease;
+}
+
+#delete-btn:hover {
+  background: var(--danger);
+  color: white;
+  transform: scale(1.1);
+}
+
+
+/* ---- 7. STOPKA I KONTROLA ----- */
 footer {
-  margin-top: auto;
-  padding: 30px;
   width: 100%;
   max-width: 600px;
+  margin-top: 30px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+#repetition-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#repetition-controls button {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px;
+  background: #21262d;
+  color: var(--text-color);
+  border: 1px solid #30363d;
+  border-radius: 4px;
 }
 
 #show-answer {
   width: 100%;
   padding: 15px;
-  font-size: 1.1rem;
   background: transparent;
   color: var(--neon-blue);
   border: 2px solid var(--neon-blue);
   border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#show-answer:hover {
-  background: var(--neon-blue);
-  color: var(--bg-color);
-}
-
-#repetition-controls {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
-  justify-content: center;
-  flex-wrap: wrap; /* Allows buttons to stack on very small screens */
-}
-
-#repetition-controls button {
-  padding: 10px 15px;
-  cursor: pointer;
-  background: #21262d;
-  color: var(--text-color);
-  border: 1px solid #30363d;
-  border-radius: 4px;
-  flex: 1; 
-  min-width: 80px;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .omega {
   background: var(--danger) !important;
   color: white !important;
-  border: 1px solid white !important;
-  font-weight: bold;
-  text-transform: uppercase;
   box-shadow: 0 0 10px var(--danger);
 }
 
-/* --- SYSTEM TOOLS --- */
 #system-tools {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  padding-top: 10px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 #system-tools button {
-  font-size: 0.75rem;
   background: #161b22;
   border: 1px solid #30363d;
-  opacity: 0.7;
-  color: white;
-  padding: 5px 10px;
-  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 5px 15px;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
-@media screen and (max-width: 768px) {
-  main {
-    width: 95%;
-  }
-
-  .card {
-    padding: 20px;
-    margin-top: 15px;
-  }
-
-  h1 { font-size: 1.5rem; }
-
-  #show-answer {
-    font-size: 1rem;
-  }
+/* --- 8. MOBILNOŚĆ (BEZ PLACKÓW) --- */
+@media (max-width: 768px) {
+  .card { padding: 25px; }
+  #question-text { font-size: 1.2rem; }
+  #repetition-controls button { flex: 1 1 45%; }
 }
