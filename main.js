@@ -139,8 +139,9 @@ const shownextDueCard = () => {
     currentIndex = deck.indexOf(dueCards[0]);
     renderCard();
   } else {
-    renderCard();
+    currentIndex = -1;
   }
+    renderCard();
 };
 
 // --- 6. SYNC & ARCHIVE ---
