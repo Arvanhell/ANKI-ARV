@@ -71,7 +71,7 @@ const deleteCard = () => {
     updateStats();
     shownextDueCard();
     
-    console.log("System: Karta zneutralizowana pomyślnie.");
+    console.log("System: Card is disintegrated.");
   }
 };
 
@@ -116,7 +116,7 @@ const showAnswer = () => {
 const renderCard = () => {
   const currentCard = deck[currentIndex];
   if (!currentCard) {
-    $('question-text').innerText = "All clear.. . Rest, Spark.";
+    $('question-text').innerText = "All clear... Rest, Spark...";
     $('answer-text').style.display = 'none';
     $('repetition-controls').style.display = "none";
     $('show-answer').style.display = 'none';
